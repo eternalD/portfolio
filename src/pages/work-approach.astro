@@ -194,7 +194,7 @@ const skillCategories = [
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
-    border-bottom: none;
+    border-bottom: var(--border-style-none);
     margin-top: 0;
     margin-bottom: var(--space-4);
   }
@@ -226,7 +226,7 @@ const skillCategories = [
   .expertise-tag {
     display: inline-block;
     padding: var(--space-1) var(--space-3);
-    border: 1px solid var(--color-border);
+    border: var(--border-width-1) var(--border-style-solid) var(--color-border);
     border-radius: var(--radius-full);
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
@@ -263,7 +263,7 @@ const skillCategories = [
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
     color: var(--color-accent-category);
-    border-bottom: 2px solid var(--color-accent-category);
+    border-bottom: var(--border-width-2) var(--border-style-solid) var(--color-accent-category);
     padding-bottom: var(--space-2);
     margin-top: 0;
     margin-bottom: var(--space-3);
@@ -278,7 +278,7 @@ const skillCategories = [
   .skill-card {
     border-radius: var(--radius-md);
     padding: var(--space-2) var(--space-3);
-    border: 1px solid transparent;
+    border: var(--border-width-1) var(--border-style-solid) transparent;
   }
 
   .skill-card--experienced {
@@ -315,7 +315,7 @@ const skillCategories = [
     gap: var(--space-4);
     margin-top: var(--space-8);
     padding-top: var(--space-4);
-    border-top: 1px solid var(--color-border);
+    border-top: var(--border-width-1) var(--border-style-solid) var(--color-border);
   }
 
   .legend-label {
@@ -342,7 +342,7 @@ const skillCategories = [
     width: 14px;
     height: 14px;
     border-radius: var(--radius-sm);
-    border: 1px solid transparent;
+    border: var(--border-width-1) var(--border-style-solid) transparent;
   }
 
   .legend-chip--experienced {
