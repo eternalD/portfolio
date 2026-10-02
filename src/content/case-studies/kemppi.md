@@ -4,6 +4,7 @@ client: "Kemppi"
 summary: "Building cloud-connected welding management software on serverless AWS using Lean UX cycles and coded prototypes."
 order: 5
 tags: ["Serverless AWS", "Lean UX", "Coded Prototypes", "AngularJS"]
+illustration: "kemppi.png"
 ---
 
 Kemppi develops welding equipment, services, and management technology. The company was responding to a growing skills gap as experienced welders retired and demand for qualified workers increased. WeldEye connected Kemppi equipment to a cloud-based welding management solution, helping teams capture weld data and support inspections.

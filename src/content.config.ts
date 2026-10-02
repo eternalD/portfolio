@@ -9,6 +9,7 @@ const caseStudiesCollection = defineCollection({
     summary: z.string(),
     order: z.number().default(0),
     tags: z.array(z.string()).default([]),
+    illustration: z.string().optional(),
   }),
 });
 

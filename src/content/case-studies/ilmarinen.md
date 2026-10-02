@@ -4,6 +4,7 @@ client: "Ilmarinen"
 summary: "Auditing thousands of redesigned web pages for WCAG AA conformance with automated testing workflows and shared tooling."
 order: 4
 tags: ["Accessibility", "WCAG AA", "Audit", "Design Systems"]
+illustration: "ilmarinen.png"
 ---
 
 ### Project overview

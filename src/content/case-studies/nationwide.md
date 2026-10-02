@@ -4,6 +4,7 @@ client: "Nationwide"
 summary: "Revitalizing B2B user personas by conducting remote interviews and embedding validated archetypes into daily team practice."
 order: 1
 tags: ["User Research", "Personas", "B2B", "Remote Interviews"]
+illustration: "nationwide.png"
 ---
 
 ### Project overview

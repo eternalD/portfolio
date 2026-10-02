@@ -4,6 +4,7 @@ client: "Continental"
 summary: "Transforming decades of paper factory manuals into a modern, cloud-based AWS documentation platform with search and QR-code access."
 order: 3
 tags: ["On-Site Research", "AWS Cloud", "Industrial IoT", "Personas"]
+illustration: "continental.png"
 ---
 
 ### Project overview

@@ -4,6 +4,7 @@ client: "Government Agency"
 summary: "Co-creating an enterprise design system in one-week agile sprints, achieving lasting adoption through hands-on testing."
 order: 2
 tags: ["Design System", "Co-Creation", "Agile Sprints", "B2B"]
+illustration: "government.png"
 ---
 
 ### Project overview
