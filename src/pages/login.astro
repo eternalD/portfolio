@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const redirect = Astro.url.searchParams.get('redirect') ?? '/case-studies';
+const hasError = Astro.url.searchParams.has('error');
+---
+
+<BaseLayout title="Login | Harri Kilpiö" description="Password-protected area">
+  <div class="container login-container">
+    <div class="login-card">
+      <h1 class="login-heading">Protected content</h1>
+      <p class="login-subtext">Enter the password to access the case studies.</p>
+
+      {hasError && (
+        <p class="login-error" role="alert">Incorrect password. Please try again.</p>
+      )}
+
+      <form class="login-form" method="POST" action="/api/auth">
+        <input type="hidden" name="redirect" value={redirect} />
+
+        <div class="field">
+          <label class="field-label" for="password">Password</label>
+          <input
+            class="field-input"
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+            autofocus
+          />
+        </div>
+
+        <button class="btn btn--primary" type="submit">Unlock</button>
+      </form>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .login-container {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+  }
+
+  .login-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-10) var(--space-8);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .login-heading {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-2);
+  }
+
+  .login-subtext {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .login-error {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent-category);
+    background-color: rgba(192, 57, 43, 0.08);
+    border: 1px solid rgba(192, 57, 43, 0.25);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .field-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+  }
+
+  .field-input {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color var(--transition-fast);
+  }
+
+  .field-input:focus {
+    outline: none;
+    border-color: var(--color-text-primary);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-sans);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+  }
+
+  .btn--primary {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg);
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-accent-hover);
+  }
+</style>

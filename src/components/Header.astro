@@ -1,0 +1,112 @@
+---
+const currentPath = Astro.url.pathname;
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/about-me", label: "About" },
+  { href: "/work-approach", label: "Work Approach & Skills" },
+  { href: "/experience-education", label: "Experience" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="site-brand">
+      <span class="brand-name">Harri Kilpiö</span>
+      <span class="brand-title">Designer & Design Engineer</span>
+    </a>
+    <nav class="site-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        {navItems.map((item) => {
+          const isActive = item.href === "/" 
+            ? currentPath === "/" 
+            : currentPath.startsWith(item.href);
+          return (
+            <li class="nav-item">
+              <a 
+                href={item.href} 
+                class:list={["nav-link", { "nav-link--active": isActive }]}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .site-brand {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .brand-name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+  }
+
+  .brand-title {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .nav-link:hover {
+    background-color: var(--color-surface-hover);
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  .nav-link--active {
+    background-color: var(--color-surface-elevated);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-medium);
+  }
+</style>

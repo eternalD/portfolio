@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const caseStudies = await getCollection('case-studies');
+const sortedCaseStudies = caseStudies.sort((a, b) => a.data.order - b.data.order);
+
+const tocSections = [
+  {
+    title: "Intro",
+    links: [
+      { title: "About me", href: "/about-me", description: "Background, location, family, interests" },
+      { title: "Work approach & Skills", href: "/work-approach", description: "Design philosophy, core expertise, and T-shape of skills" },
+      { title: "Experience & education", href: "/experience-education", description: "23-year career timeline and academic background" },
+    ]
+  },
+  {
+    title: "Case Studies",
+    links: [
+      { title: "Case Studies Overview", href: "/case-studies", description: "Collection of 5 enterprise & digital product case studies" }
+    ]
+  },
+  {
+    title: "Contact info",
+    links: [
+      { title: "Contact info", href: "/contact", description: "Email, phone number, and LinkedIn connection" }
+    ]
+  }
+];
+---
+
+<BaseLayout title="Harri Kilpiö | Portfolio of Experience" description="Designer & Design Engineer Portfolio of Experience | Fall 2026">
+  <div class="container hero-container">
+    <div class="hero-badge">
+      <span class="badge badge--experienced">Available for Opportunities</span>
+      <span class="hero-subtext">Portfolio of Experience | Fall 2026</span>
+    </div>
+    
+    <h1 class="hero-title">
+      Designer & <span class="text-accent">Design Engineer</span>
+    </h1>
+    
+    <p class="hero-lead">
+      Bridging the human side of service design with the technical craft of modern frontend engineering, design systems, and accessible web experiences.
+    </p>
+
+    <div class="cta-row">
+      <a href="/case-studies" class="btn btn--primary">View Case Studies</a>
+      <a href="/work-approach" class="btn btn--secondary">Work Approach</a>
+    </div>
+  </div>
+
+  <section class="container toc-section">
+    <h2 class="section-heading">Table of Contents</h2>
+    
+    <div class="toc-grid">
+      {tocSections.map((section) => (
+        <div class="toc-group">
+          <h3 class="toc-group-title">{section.title}</h3>
+          <div class="toc-cards">
+            {section.links.map((link) => (
+              <a href={link.href} class="card toc-card">
+                <div class="toc-card-header">
+                  <span class="toc-card-title">{link.title}</span>
+                  <span class="toc-card-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+                <p class="toc-card-desc">{link.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container featured-section">
+    <div class="featured-header">
+      <h2 class="section-heading">Featured Case Studies</h2>
+      <a href="/case-studies" class="view-all-link">All 5 studies &rarr;</a>
+    </div>
+
+    <div class="featured-grid">
+      {sortedCaseStudies.slice(0, 3).map((study) => (
+        <a href={`/case-studies/${study.id}`} class="card study-card">
+          <div class="study-meta">
+            <span class="study-client">{study.data.client}</span>
+          </div>
+          <h3 class="study-title">{study.data.title}</h3>
+          <p class="study-summary">{study.data.summary}</p>
+          <div class="study-tags">
+            {study.data.tags.slice(0, 3).map((tag) => (
+              <span class="badge badge--comfortable">{tag}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-container {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .hero-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .hero-subtext {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-4);
+    letter-spacing: -0.02em;
+  }
+
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  .hero-lead {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    margin-bottom: var(--space-8);
+  }
+
+  .cta-row {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .btn--primary {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg);
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-accent-hover);
+    color: var(--color-bg);
+    text-decoration: none;
+  }
+
+  .btn--secondary {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn--secondary:hover {
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .toc-section, .featured-section {
+    padding-top: var(--space-12);
+  }
+
+  .section-heading {
+    margin-bottom: var(--space-6);
+  }
+
+  .toc-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .toc-group-title {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .toc-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .toc-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .toc-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2);
+  }
+
+  .toc-card-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+  }
+
+  .toc-card-arrow {
+    color: var(--color-text-muted);
+    transition: transform var(--transition-fast), color var(--transition-fast);
+  }
+
+  .toc-card:hover .toc-card-arrow {
+    color: var(--color-accent);
+    transform: translateX(4px);
+  }
+
+  .toc-card-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .featured-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .view-all-link {
+    font-size: var(--font-size-sm);
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .study-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .study-client {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+  }
+
+  .study-title {
+    font-size: var(--font-size-base);
+    margin: var(--space-2) 0 var(--space-3) 0;
+    color: var(--color-text-primary);
+  }
+
+  .study-summary {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    flex-grow: 1;
+    margin-bottom: var(--space-4);
+  }
+
+  .study-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+</style>

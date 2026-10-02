@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const caseStudies = await getCollection('case-studies');
+const sortedCaseStudies = caseStudies.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Case Studies | Harri Kilpiö" description="A collection of project case studies across enterprise design systems, B2B research, cloud migration, and accessibility.">
+  <div class="container page-container">
+    <header class="page-header">
+      <span class="badge badge--experienced">Selected Work</span>
+      <h1>Case Studies</h1>
+      <p class="lead-text">
+        A collection of project case studies highlighting user research, design system creation, cloud migrations, and accessibility audits.
+      </p>
+    </header>
+
+    <div class="case-studies-list">
+      {sortedCaseStudies.map((study, idx) => (
+        <article class="card study-card">
+          <div class="study-card-content">
+            <div class="study-meta">
+              <span class="study-number">0{idx + 1}</span>
+              <span class="study-client">{study.data.client}</span>
+            </div>
+            
+            <h2 class="study-title">
+              <a href={`/case-studies/${study.id}`}>{study.data.title}</a>
+            </h2>
+            
+            <p class="study-summary">{study.data.summary}</p>
+            
+            <div class="study-footer">
+              <div class="study-tags">
+                {study.data.tags.map((tag) => (
+                  <span class="badge badge--comfortable">{tag}</span>
+                ))}
+              </div>
+              <a href={`/case-studies/${study.id}`} class="study-read-link">
+                Read case study &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    max-width: 860px;
+  }
+
+  .page-header {
+    margin-bottom: var(--space-10);
+  }
+
+  .lead-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+
+  .case-studies-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .study-card {
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .study-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .study-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  .study-number {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .study-client {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+  }
+
+  .study-title {
+    font-size: var(--font-size-xl);
+    margin: 0 0 var(--space-3) 0;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .study-title a {
+    color: var(--color-text-primary);
+  }
+
+  .study-title a:hover {
+    color: var(--color-accent);
+  }
+
+  .study-summary {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .study-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--space-4);
+  }
+
+  .study-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .study-read-link {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+  }
+</style>

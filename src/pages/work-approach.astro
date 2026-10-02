@@ -1,0 +1,357 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const expertiseTags = [
+  "UI/UX Design", "AI-Assisted Design", "Service Design",
+  "Co-Creation", "Facilitation", "HTML", "CSS",
+  "Prototyping", "User Research", "Accessibility", "Responsible AI",
+];
+
+const skillCategories = [
+  {
+    category: "Research",
+    skills: [
+      { name: "User research", desc: "Understand needs, behaviors, and pain points through interviews and observation.", level: "Experienced" },
+      { name: "Interviews", desc: "In-depth conversations to validate assumptions and gather rich context.", level: "Experienced" },
+      { name: "Usability testing", desc: "Validate usability and identify friction points in prototypes and live systems.", level: "Experienced" },
+    ]
+  },
+  {
+    category: "Visual Design",
+    skills: [
+      { name: "Sketching", desc: "Quick sketches to explore ideas, flows, and layouts before digital tools.", level: "Experienced" },
+      { name: "UI design", desc: "Hi-fi / low fidelity — Design systems, components, and interaction patterns across fidelity levels.", level: "Experienced" },
+      { name: "Design tools", desc: "Mostly Figma — Figma-first workflow with plugins, variables, and design system support.", level: "Experienced" },
+    ]
+  },
+  {
+    category: "Design",
+    skills: [
+      { name: "Human-centered design", desc: "People-centered methods to define problems, opportunities, and solutions.", level: "Experienced" },
+      { name: "Service design", desc: "Map end-to-end experiences across touchpoints, journeys, and ecosystems.", level: "Experienced" },
+      { name: "Co-design & co-creation", desc: "Collaborative workshops and co-creation sessions with stakeholders and teams.", level: "Experienced" },
+      { name: "Facilitation", desc: "On-site & remote — Facilitate workshops, sessions, and decision-making.", level: "Experienced" },
+      { name: "Design systems", desc: "Govern components, tokens, and documentation for consistent UI.", level: "Experienced" },
+      { name: "Prototyping", desc: "Design & code — Build interactive prototypes using design tools and front-end code.", level: "Experienced" },
+      { name: "Interaction design", desc: "Craft behavior, feedback, and motion that feels intentional and clear.", level: "Experienced" },
+      { name: "Accessibility", desc: "Design accessible interfaces that work for everyone, everywhere.", level: "Experienced" },
+      { name: "Business Design", desc: "Align design decisions with business goals, value, and strategic outcomes.", level: "Comfortable" },
+      { name: "Business Model Modelling", desc: "Model revenue, cost, and value streams to inform product strategy.", level: "Comfortable" },
+      { name: "Value Proposition Design", desc: "Define the promise, jobs, and gains that matter most to customers.", level: "Comfortable" },
+    ]
+  },
+  {
+    category: "Design Engineering",
+    skills: [
+      { name: "HTML", desc: "Structure content, semantics, and accessibility in HTML.", level: "Experienced" },
+      { name: "CSS", desc: "Layout, typography, and visual systems with CSS.", level: "Experienced" },
+      { name: "IDE Tools", desc: "Visual Studio Code — Work efficiently with a modern development environment.", level: "Experienced" },
+      { name: "Component libraries", desc: "Build and manage reusable UI components and libraries.", level: "Experienced" },
+      { name: "Frameworks", desc: "Astro, React — Build fast, scalable front-end experiences.", level: "Experienced" },
+      { name: "JavaScript", desc: "Add interactivity with JavaScript and modern web APIs.", level: "Comfortable" },
+    ]
+  },
+  {
+    category: "AI tools & skills",
+    skills: [
+      { name: "Claude", desc: "Use AI to generate, refine, and iterate on copy and content.", level: "Experienced" },
+      { name: "Copilot", desc: "Pair with AI to speed up code, suggestions, and implementation.", level: "Experienced" },
+      { name: "Figma Agent", desc: "Automate repetitive design tasks and generate variations quickly.", level: "Comfortable" },
+      { name: "Figma Make", desc: "Generate, automate, and iterate on design work with Figma's AI tools.", level: "Comfortable" },
+    ]
+  }
+];
+---
+
+<BaseLayout title="Work Approach & Skills | Harri Kilpiö" description="Design Engineer & Service Designer philosophy, core expertise, and T-shape of skills.">
+  <div class="combined-page">
+
+    <div class="two-col-layout">
+
+      <!-- LEFT: Work Approach -->
+      <aside class="work-approach-col">
+        <h1 class="col-title">Work approach</h1>
+
+        <div class="approach-body">
+          <h2 class="approach-role">Design Engineer &amp; Service Designer</h2>
+
+          <p>
+            I work at the intersection of <strong>service design and frontend engineering</strong>, bringing
+            together the human side of design with the technical craft to actually build it.
+          </p>
+
+          <p>
+            On the <strong>technical side</strong>, accessibility, semantic HTML, and CSS are second nature to
+            me, and I bring a deep understanding of design systems, from traditional component libraries to
+            AI-assisted ones. I know what Figma can do, where newer AI tools genuinely help, and how to make
+            sure the end product is energy-efficient and uses AI responsibly.
+          </p>
+
+          <p>
+            On the <strong>human side</strong>, I want to know why people actually use what we build, not just
+            how. I'm the one getting the right people in a room (or a Miro board) and making sure the session
+            actually goes somewhere. And I keep it tied back to real business goals: customer-centric OKRs,
+            not vanity metrics.
+          </p>
+
+          <p>
+            I'm not a solo player. I work best as part of a team with shared goals, and I can zoom out to
+            strategy and zoom back in to write the CSS myself.
+          </p>
+
+          <div class="expertise-block">
+            <p class="expertise-label">Expertise</p>
+            <div class="expertise-tags">
+              {expertiseTags.map((tag) => (
+                <span class="expertise-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: T-shape of skills -->
+      <div class="tshape-col">
+        <h1 class="col-title">T-shape of skills</h1>
+
+        <div class="skills-grid">
+          {skillCategories.map((group) => (
+            <div class="skill-column">
+              <h2 class="column-heading">{group.category}</h2>
+              <div class="skill-cards">
+                {group.skills.map((skill) => (
+                  <div class:list={["skill-card", skill.level === "Experienced" ? "skill-card--experienced" : "skill-card--comfortable"]}>
+                    <strong class="skill-name">{skill.name}</strong>
+                    <p class="skill-desc">{skill.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <footer class="skills-legend">
+          <span class="legend-label">Depth of skills and experience</span>
+          <div class="legend-items">
+            <div class="legend-item">
+              <span class="legend-chip legend-chip--experienced"></span>
+              <span>Experienced</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-chip legend-chip--comfortable"></span>
+              <span>Comfortable</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .combined-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  .page-eyebrow {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+  }
+
+  /* Two-column layout */
+  .two-col-layout {
+    display: grid;
+    grid-template-columns: 1.75fr 3.25fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  @media (max-width: 767px) {
+    .two-col-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  /* Column titles */
+  .col-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-top: 0;
+    margin-bottom: var(--space-8);
+  }
+
+  /* ── Work Approach column ── */
+  .approach-role {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    border-bottom: none;
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  .approach-body p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .expertise-block {
+    margin-top: var(--space-6);
+  }
+
+  .expertise-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-accent-category);
+    margin-bottom: var(--space-3);
+  }
+
+  .expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .expertise-tag {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    background-color: var(--color-surface);
+  }
+
+  /* ── T-shape column ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  @media (max-width: 1100px) and (min-width: 768px) {
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .column-heading {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-category);
+    border-bottom: 2px solid var(--color-accent-category);
+    padding-bottom: var(--space-2);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+  }
+
+  .skill-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .skill-card {
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid transparent;
+  }
+
+  .skill-card--experienced {
+    background-color: #CBE5D9;
+    border-color: var(--badge-experienced-border);
+  }
+
+  .skill-card--comfortable {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  .skill-name {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+  }
+
+  .skill-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+    margin-bottom: 0;
+  }
+
+  /* Legend */
+  .skills-legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .legend-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .legend-items {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  .legend-chip {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+  }
+
+  .legend-chip--experienced {
+    background-color: #CBE5D9;
+    border-color: var(--badge-experienced-border);
+  }
+
+  .legend-chip--comfortable {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+  }
+</style>

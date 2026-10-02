@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const careerRoles = [
+  {
+    company: "IBM",
+    title: "Designer and Design Engineer",
+    period: "October 2026 - Present",
+    description: "Leading service design, design systems, and frontend implementation across enterprise cloud transformation projects."
+  },
+  {
+    company: "Nordcloud",
+    title: "Senior Service Designer and Design Engineer",
+    period: "Jan 2018 - September 2026",
+    description: "Leading service design, design systems, and frontend implementation across enterprise cloud transformation projects."
+  },
+  {
+    company: "SC5",
+    title: "Designer and Design Engineer",
+    period: "Apr 2012 - Dec 2017",
+    description: "Full-stack UI/UX design, Lean UX sprints, and frontend engineering for major Nordic clients and cloud products."
+  },
+  {
+    company: "Luxus",
+    title: "Senior Front-End Developer & Web Developer",
+    period: "Aug 2010 - Apr 2012",
+    description: "Engineered responsive web applications and interactive digital campaigns."
+  },
+  {
+    company: "Taivas",
+    title: "Technical Designer",
+    period: "Jan 2009 - July 2010",
+    description: "Creative technology and digital production for prominent brand campaigns."
+  },
+  {
+    company: "Ego Beta",
+    title: "Technical Designer",
+    period: "May 2007 - Dec 2008",
+    description: "Interactive media design, interface development, and prototyping."
+  },
+  {
+    company: "Satama Interactive",
+    title: "Senior Interface Programmer",
+    period: "Oct 2003 - May 2007",
+    description: "Interface architecture, accessible markup, and interactive application engineering."
+  }
+];
+
+const educationList = [
+  {
+    degree: "Bachelor’s degree in Multimedia",
+    institution: "Hämeen Ammattikorkeakoulu (HAMK)",
+    year: "2004",
+    field: "Digital design and interactive software development"
+  },
+  {
+    degree: "BBA (Vocational) in Marketing",
+    institution: "Keravan kauppaoppilaitos",
+    year: "1997",
+    field: "Business administration and marketing"
+  }
+];
+---
+
+<BaseLayout title="Experience & Education | Harri Kilpiö" description="23 years in digital design and engineering — career timeline and education.">
+  <div class="container page-container">
+    <header class="page-header">
+      <span class="badge badge--experienced">Career Journey</span>
+      <h1>Experience & Education</h1>
+      <p class="lead-text">
+        23 years in the field — starting in advertising and campaigns, moving through service design, and landing deep in enterprise-level digital products.
+      </p>
+    </header>
+
+    <section class="timeline-section">
+      <h2>Work Experience</h2>
+      <div class="timeline">
+        {careerRoles.map((role) => (
+          <div class="timeline-item card">
+            <div class="timeline-header">
+              <div class="role-info">
+                <h3 class="role-company">{role.company}</h3>
+                <span class="role-title">{role.title}</span>
+              </div>
+              <span class="role-period badge badge--comfortable">{role.period}</span>
+            </div>
+            <p class="role-desc">{role.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="education-section">
+      <h2>Education</h2>
+      <div class="education-grid">
+        {educationList.map((edu) => (
+          <div class="card edu-card">
+            <span class="edu-year badge badge--experienced">{edu.year}</span>
+            <h3 class="edu-degree">{edu.degree}</h3>
+            <p class="edu-institution">{edu.institution}</p>
+            <p class="edu-field">{edu.field}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    max-width: 800px;
+  }
+
+  .page-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .lead-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+
+  .timeline-section, .education-section {
+    margin-bottom: var(--space-12);
+  }
+
+  .timeline-section h2, .education-section h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .role-company {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .role-title {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .role-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .edu-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .edu-year {
+    align-self: flex-start;
+    margin-bottom: var(--space-1);
+  }
+
+  .edu-degree {
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .edu-institution {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .edu-field {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+</style>

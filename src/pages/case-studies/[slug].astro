@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const { slug } = Astro.params;
+
+const allStudies = await getCollection('case-studies');
+const study = allStudies.find((s) => s.id === slug);
+
+if (!study) {
+  return Astro.redirect('/case-studies', 302);
+}
+
+const { Content } = await render(study);
+
+const sortedStudies = allStudies.sort((a, b) => a.data.order - b.data.order);
+const currentIndex = sortedStudies.findIndex((s) => s.id === study.id);
+const prevStudy = currentIndex > 0 ? sortedStudies[currentIndex - 1] : null;
+const nextStudy = currentIndex < sortedStudies.length - 1 ? sortedStudies[currentIndex + 1] : null;
+---
+
+<BaseLayout title={`${study.data.title} | Harri Kilpiö`} description={study.data.summary}>
+  <div class="container article-container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/case-studies">&larr; Back to Case Studies</a>
+    </nav>
+
+    <header class="study-header">
+      <div class="header-meta">
+        <span class="badge badge--experienced">{study.data.client}</span>
+        <div class="header-tags">
+          {study.data.tags.map((tag) => (
+            <span class="badge badge--comfortable">{tag}</span>
+          ))}
+        </div>
+      </div>
+      
+      <h1 class="study-headline">{study.data.title}</h1>
+      <p class="study-summary-lead">{study.data.summary}</p>
+    </header>
+
+    <article class="study-prose">
+      <Content />
+    </article>
+
+    <nav class="study-pagination" aria-label="Adjacent case studies">
+      <div class="pagination-col">
+        {prevStudy && (
+          <a href={`/case-studies/${prevStudy.id}`} class="card pagination-card pagination-card--prev">
+            <span class="pagination-direction">&larr; Previous Case Study</span>
+            <span class="pagination-title">{prevStudy.data.title}</span>
+          </a>
+        )}
+      </div>
+      <div class="pagination-col">
+        {nextStudy && (
+          <a href={`/case-studies/${nextStudy.id}`} class="card pagination-card pagination-card--next">
+            <span class="pagination-direction">Next Case Study &rarr;</span>
+            <span class="pagination-title">{nextStudy.data.title}</span>
+          </a>
+        )}
+      </div>
+    </nav>
+  </div>
+</BaseLayout>
+
+<style>
+  .article-container {
+    max-width: 800px;
+  }
+
+  .breadcrumb-nav {
+    margin-bottom: var(--space-6);
+  }
+
+  .breadcrumb-nav a {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .breadcrumb-nav a:hover {
+    color: var(--color-accent);
+  }
+
+  .study-header {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-8);
+    margin-bottom: var(--space-8);
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .header-tags {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .study-headline {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .study-summary-lead {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: 0;
+  }
+
+  /* Prose markdown styling */
+  .study-prose {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .study-prose :global(h1) {
+    display: none; /* Hide top-level title since it's in the header */
+  }
+
+  .study-prose :global(h2),
+  .study-prose :global(h3) {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+
+  .study-prose :global(h2) {
+    font-size: var(--font-size-xl);
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--space-2);
+  }
+
+  .study-prose :global(h3) {
+    font-size: var(--font-size-lg);
+  }
+
+  .study-prose :global(p) {
+    margin-bottom: var(--space-4);
+    color: var(--color-text-secondary);
+  }
+
+  .study-prose :global(ul),
+  .study-prose :global(ol) {
+    margin-bottom: var(--space-6);
+    padding-left: var(--space-6);
+  }
+
+  .study-prose :global(li) {
+    margin-bottom: var(--space-2);
+    color: var(--color-text-secondary);
+  }
+
+  .study-pagination {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 600px) {
+    .study-pagination {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pagination-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    text-decoration: none;
+    height: 100%;
+  }
+
+  .pagination-card--next {
+    text-align: right;
+  }
+
+  .pagination-direction {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .pagination-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+  }
+
+  .pagination-card:hover .pagination-title {
+    color: var(--color-accent);
+  }
+</style>

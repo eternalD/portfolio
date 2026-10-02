@@ -1,0 +1,62 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-info">
+      <p class="footer-title">Harri Kilpiö — Portfolio of Experience</p>
+      <p class="footer-subtitle">Designer & Design Engineer</p>
+    </div>
+    <div class="footer-links">
+      <a href="/contact">Contact</a>
+      <a href="https://linkedin.com/in/harrikilpio" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    margin-top: auto;
+    padding: var(--space-8) 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .footer-info p {
+    margin: 0;
+  }
+
+  .footer-title {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .footer-subtitle {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+
+  .footer-links a {
+    color: var(--color-text-secondary);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent);
+  }
+</style>

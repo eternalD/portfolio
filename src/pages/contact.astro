@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const contactMethods = [
+  {
+    label: "Email",
+    value: "harri.kilpio@gmail.com",
+    href: "mailto:harri.kilpio@gmail.com",
+    action: "Send an email"
+  },
+  {
+    label: "Phone",
+    value: "+358 40567013",
+    href: "tel:+35840567013",
+    action: "Call / Message"
+  },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/harrikilpio",
+    href: "https://www.linkedin.com/in/harrikilpio/",
+    action: "View profile"
+  }
+];
+---
+
+<BaseLayout title="Contact Info | Harri Kilpiö" description="Get in touch with Harri Kilpiö — email, phone, and LinkedIn.">
+  <div class="container page-container">
+    <header class="page-header">
+      <span class="badge badge--experienced">Get In Touch</span>
+      <h1>Contact info</h1>
+      <p class="lead-text">
+        Interested in working together or discussing design systems, service design, or front-end engineering? Here's where to find me.
+      </p>
+    </header>
+
+    <div class="contact-card card">
+      <div class="contact-header">
+        <h2 class="contact-name">Harri Kilpiö</h2>
+        <span class="contact-role">Designer & Design Engineer</span>
+      </div>
+
+      <div class="contact-grid">
+        {contactMethods.map((method) => (
+          <div class="contact-item">
+            <span class="contact-label">{method.label}</span>
+            <a href={method.href} class="contact-value" target={method.href.startsWith("http") ? "_blank" : undefined} rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+              {method.value}
+            </a>
+            <span class="contact-action">{method.action} &rarr;</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    max-width: 760px;
+  }
+
+  .page-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .lead-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+
+  .contact-card {
+    padding: var(--space-8);
+    background-color: var(--color-surface);
+  }
+
+  .contact-header {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .contact-name {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-1) 0;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .contact-role {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4);
+    background-color: var(--color-surface-elevated);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+  }
+
+  .contact-label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-1);
+  }
+
+  .contact-value {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    word-break: break-all;
+  }
+
+  .contact-value:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .contact-action {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-top: var(--space-1);
+  }
+</style>

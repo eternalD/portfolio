@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About Me | Harri Kilpiö" description="Personal background, education, and interests of Harri Kilpiö.">
+  <div class="container page-container">
+    <header class="page-header">
+      <span class="badge badge--comfortable">Personal Background</span>
+      <h1>About me</h1>
+    </header>
+
+    <div class="about-content">
+      <section class="card intro-card">
+        <h2>Hi, nice to meet you!</h2>
+        <img src="/pic-profile.jpg" alt="pic of Harri Kilpiö" class="profile-pic">
+        <p>
+          I'm a designer and design engineer living in <strong>Järvenpää</strong> (home of Sibelius, and yours truly).
+        </p>
+        <p>
+          After finishing school at Keravan Kauppaoppilaitos, I spent a while figuring out my next move. Computers had always pulled me in, so I ended up at <strong>Hämeen Ammattikorkeakoulu</strong>, where I got my start in digital design and development.
+        </p>
+        <p>
+          Outside of work, I've got two kids (6 and 9) who keep me busy with all kinds of adventures. I'm also an avid gamer, equal parts retro enthusiast and current-gen player, and a bit of a music nerd, always up for a good concert or gig.
+        </p>
+        <p class="closing-note">
+          Looking forward to hearing from you!
+        </p>
+      </section>
+
+      
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    max-width: 760px;
+  }
+
+  .page-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .page-header h1 {
+    margin-top: var(--space-2);
+  }
+  .intro-card {
+    margin-bottom: var(--space-8);
+    background-color: var(--color-surface);
+  }
+
+  .intro-card h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    border-bottom: none;
+    font-size: var(--font-size-xl);
+  }
+
+  .closing-note {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-accent);
+    margin-top: var(--space-6);
+    margin-bottom: 0;
+  }
+
+  .quick-facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .fact-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+  }
+
+  .fact-label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+  }
+
+  .fact-value {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+  }
+
+  .profile-pic {
+    max-width: 50%;
+    align-self: center;
+  }
+</style>

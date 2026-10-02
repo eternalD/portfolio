@@ -1,0 +1,78 @@
+:root {
+  /* Color Palette - Neutrals & Accents */
+  --color-bg: #F0ECE4;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F5F1EB;
+  --color-surface-elevated: #EDE9E1;
+  --color-border: #D8D2C8;
+  --color-border-subtle: #E8E3DA;
+
+  --color-text-primary: #1A1A1E;
+  --color-text-secondary: #4A4A52;
+  --color-text-muted: #7A7A84;
+  --color-accent: #1A1A1E;
+  --color-accent-hover: #3A3A44;
+  --color-accent-subtle: rgba(26, 26, 30, 0.08);
+  --color-accent-category: #C0392B;
+
+  /* Experience Level Tokens */
+  --badge-experienced-bg: #CBE5D9;
+  --badge-experienced-text: #1A1A1E;
+  --badge-experienced-border: #A8BFB2;
+
+  --badge-comfortable-bg: #E8E3DA;
+  --badge-comfortable-text: #4A4A52;
+  --badge-comfortable-border: #C8C2B8;
+
+  /* Typography Scale — Utopia fluid type
+     Viewport: 320px → 1400px
+     Base:     16px  → 20px
+     Scale:    Minor Third (1.2) → Major Third (1.25)
+     https://utopia.fyi */
+  --font-family-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --font-size-xs:   clamp(0.6944rem, 0.1564vw + 0.6632rem, 0.8000rem);  /* 11→13px */
+  --font-size-sm:   clamp(0.8333rem, 0.2469vw + 0.7840rem, 1.0000rem);  /* 13→16px */
+  --font-size-base: clamp(1.0000rem, 0.3704vw + 0.9259rem, 1.2500rem);  /* 16→20px */
+  --font-size-lg:   clamp(1.2000rem, 0.5370vw + 1.0926rem, 1.5625rem);  /* 19→25px */
+  --font-size-xl:   clamp(1.4400rem, 0.7602vw + 1.2880rem, 1.9531rem);  /* 23→31px */
+  --font-size-2xl:  clamp(1.7280rem, 1.0569vw + 1.5166rem, 2.4414rem);  /* 28→39px */
+  --font-size-3xl:  clamp(2.0736rem, 1.4491vw + 1.7838rem, 3.0518rem);  /* 33→49px */
+  --font-size-4xl:  clamp(2.4883rem, 1.9650vw + 2.0953rem, 3.8147rem);  /* 40→61px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+
+  /* Borders & Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Layout */
+  --container-max-width: 900px;
+  --container-padding: var(--space-6);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}

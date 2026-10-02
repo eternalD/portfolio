@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Astro cache
+.astro/
+
+# Vercel deployment artifacts
+.vercel/
+
+# Environment variables (never commit secrets)
+.env
+.env.local
+.env.*.local
+
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# Internal planning/notes (not part of the codebase)
+password-protection-plan.md
