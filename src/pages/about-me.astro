@@ -90,7 +90,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .profile-pic {
-    max-width: 50%;
-    align-self: center;
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: var(--space-6);
+    border-radius: var(--radius-md);
+  }
+
+  @media (max-width: 600px) {
+    .profile-pic {
+      max-width: 100%;
+    }
   }
 </style>
