@@ -1,9 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-
-const caseStudies = await getCollection('case-studies');
-const sortedCaseStudies = caseStudies.sort((a, b) => a.data.order - b.data.order);
 
 const tocSections = [
   {
@@ -73,29 +69,6 @@ const tocSections = [
     </div>
   </section>
 
-  <section class="container featured-section">
-    <div class="featured-header">
-      <h2 class="section-heading">Featured Case Studies</h2>
-      <a href="/case-studies" class="view-all-link">All 5 studies &rarr;</a>
-    </div>
-
-    <div class="featured-grid">
-      {sortedCaseStudies.slice(0, 3).map((study) => (
-        <a href={`/case-studies/${study.id}`} class="card study-card">
-          <div class="study-meta">
-            <span class="study-client">{study.data.client}</span>
-          </div>
-          <h3 class="study-title">{study.data.title}</h3>
-          <p class="study-summary">{study.data.summary}</p>
-          <div class="study-tags">
-            {study.data.tags.slice(0, 3).map((tag) => (
-              <span class="badge badge--comfortable">{tag}</span>
-            ))}
-          </div>
-        </a>
-      ))}
-    </div>
-  </section>
 </BaseLayout>
 
 <style>
@@ -177,7 +150,7 @@ const tocSections = [
     text-decoration: none;
   }
 
-  .toc-section, .featured-section {
+  .toc-section {
     padding-top: var(--space-12);
   }
 
@@ -238,54 +211,4 @@ const tocSections = [
     margin: 0;
   }
 
-  .featured-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-
-  .view-all-link {
-    font-size: var(--font-size-sm);
-  }
-
-  .featured-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-6);
-  }
-
-  .study-card {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-  }
-
-  .study-client {
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-accent);
-  }
-
-  .study-title {
-    font-size: var(--font-size-base);
-    margin: var(--space-2) 0 var(--space-3) 0;
-    color: var(--color-text-primary);
-  }
-
-  .study-summary {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    flex-grow: 1;
-    margin-bottom: var(--space-4);
-  }
-
-  .study-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
 </style>
