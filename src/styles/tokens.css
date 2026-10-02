@@ -51,6 +51,7 @@
   --line-height-relaxed: 1.75;
 
   /* Spacing Scale */
+  --space-px: 2px;
   --space-1: 0.25rem;   /* 4px */
   --space-2: 0.5rem;    /* 8px */
   --space-3: 0.75rem;   /* 12px */
@@ -71,6 +72,11 @@
   /* Layout */
   --container-max-width: 900px;
   --container-padding: var(--space-6);
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.08em;
 
   /* Transitions */
   --transition-fast: 150ms ease;
