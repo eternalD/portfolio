@@ -65,11 +65,12 @@ const skillCategories = [
 
 <BaseLayout title="Work Approach & Skills | Harri Kilpiö" description="Design Engineer & Service Designer philosophy, core expertise, and T-shape of skills.">
   <div class="combined-page">
-
+    <span class="badge badge--experienced">Work Approach & Skills</span>
     <div class="two-col-layout">
 
       <!-- Work Approach -->
       <aside class="work-approach-col">
+        
         <h1 class="col-title">Work approach</h1>
 
         <div class="approach-body">
@@ -114,20 +115,28 @@ const skillCategories = [
       <div class="tshape-col">
         <h1 class="col-title">T-shape of skills</h1>
 
-        <div class="skills-grid">
-          {skillCategories.map((group) => (
-            <div class="skill-column" role="region" aria-labelledby={`col-heading-${group.category.toLowerCase().replace(/\s+/g, '-')}`}>
-              <h2 id={`col-heading-${group.category.toLowerCase().replace(/\s+/g, '-')}`} class="column-heading">{group.category}</h2>
-              <div class="skill-cards">
-                {group.skills.map((skill) => (
-                  <div class:list={["skill-card", skill.level === "Experienced" ? "skill-card--experienced" : "skill-card--comfortable"]}>
-                    <strong class="skill-name">{skill.name}</strong>
-                    <p class="skill-desc">{skill.desc}</p>
-                  </div>
-                ))}
+        <div class="tshape-inner">
+          <div class="depth-arrow" aria-hidden="true">
+            <span class="depth-arrow__head depth-arrow__head--top"></span>
+            <span class="depth-arrow__line"></span>
+            <span class="depth-arrow__head depth-arrow__head--bottom"></span>
+          </div>
+
+          <div class="skills-grid">
+            {skillCategories.map((group) => (
+              <div class="skill-column" role="region" aria-labelledby={`col-heading-${group.category.toLowerCase().replace(/\s+/g, '-')}`}>
+                <h2 id={`col-heading-${group.category.toLowerCase().replace(/\s+/g, '-')}`} class="column-heading">{group.category}</h2>
+                <div class="skill-cards">
+                  {group.skills.map((skill) => (
+                    <div class:list={["skill-card", skill.level === "Experienced" ? "skill-card--experienced" : "skill-card--comfortable"]}>
+                      <strong class="skill-name">{skill.name}</strong>
+                      <p class="skill-desc">{skill.desc}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <footer class="skills-legend" aria-label="Skills legend">
@@ -234,6 +243,64 @@ const skillCategories = [
   }
 
   /* ── T-shape column ── */
+  .tshape-inner {
+    position: relative;
+    padding-left: var(--space-8);
+  }
+
+  .depth-arrow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--space-6);
+  }
+
+  @media (max-width: 68.75em) {
+    .depth-arrow {
+      display: none;
+    }
+
+    .tshape-inner {
+      padding-left: 0;
+    }
+  }
+
+  .depth-arrow__head--top,
+  .depth-arrow__head--bottom {
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    flex-shrink: 0;
+  }
+
+  .depth-arrow__head--top {
+    border-bottom: 6px solid var(--color-text-muted);
+  }
+
+  .depth-arrow__head--bottom {
+    border-top: 6px solid var(--color-text-muted);
+  }
+
+  .depth-arrow__line {
+    flex: 1;
+    width: 1px;
+    background-color: var(--color-text-muted);
+  }
+
+  .depth-arrow__label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    margin-top: var(--space-2);
+    writing-mode: horizontal-tb;
+  }
+
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

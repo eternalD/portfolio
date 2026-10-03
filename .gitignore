@@ -12,6 +12,7 @@ dist/
 
 # Environment variables (never commit secrets)
 .env
+.env.example
 .env.local
 .env.*.local
 
