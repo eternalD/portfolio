@@ -308,6 +308,19 @@ const skillCategories = [
     align-items: start;
   }
 
+  @supports (display: masonry) {
+    .skills-grid {
+      display: masonry;
+      masonry-auto-flow: pack;
+    }
+  }
+
+  @supports (grid-template-rows: masonry) {
+    .skills-grid {
+      grid-template-rows: masonry;
+    }
+  }
+
   @media (max-width: 68.75em) and (min-width: 48em) {
     .skills-grid {
       grid-template-columns: repeat(3, 1fr);
