@@ -76,7 +76,7 @@ const educationList = [
       <h2>Work Experience</h2>
       <div class="timeline">
         {careerRoles.map((role) => (
-          <div class="timeline-item card">
+          <div class="timeline-item card" role="article">
             <div class="timeline-header">
               <div class="role-info">
                 <h3 class="role-company">{role.company}</h3>
@@ -94,7 +94,7 @@ const educationList = [
       <h2>Education</h2>
       <div class="education-grid">
         {educationList.map((edu) => (
-          <div class="card edu-card">
+          <div class="card edu-card" role="article">
             <span class="edu-year badge badge--experienced">{edu.year}</span>
             <h3 class="edu-degree">{edu.degree}</h3>
             <p class="edu-institution">{edu.institution}</p>

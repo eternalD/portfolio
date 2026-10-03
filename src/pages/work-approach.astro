@@ -116,8 +116,8 @@ const skillCategories = [
 
         <div class="skills-grid">
           {skillCategories.map((group) => (
-            <div class="skill-column">
-              <h2 class="column-heading">{group.category}</h2>
+            <div class="skill-column" role="region" aria-labelledby={`col-heading-${group.category.toLowerCase().replace(/\s+/g, '-')}`}>
+              <h2 id={`col-heading-${group.category.toLowerCase().replace(/\s+/g, '-')}`} class="column-heading">{group.category}</h2>
               <div class="skill-cards">
                 {group.skills.map((skill) => (
                   <div class:list={["skill-card", skill.level === "Experienced" ? "skill-card--experienced" : "skill-card--comfortable"]}>
@@ -130,7 +130,7 @@ const skillCategories = [
           ))}
         </div>
 
-        <footer class="skills-legend">
+        <footer class="skills-legend" aria-label="Skills legend">
           <span class="legend-label">Depth of skills and experience</span>
           <div class="legend-items">
             <div class="legend-item">
@@ -173,7 +173,7 @@ const skillCategories = [
     align-items: start;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 47.9375em) {
     .two-col-layout {
       grid-template-columns: 1fr;
       gap: var(--space-10);
@@ -241,19 +241,19 @@ const skillCategories = [
     align-items: start;
   }
 
-  @media (max-width: 1100px) and (min-width: 768px) {
+  @media (max-width: 68.75em) and (min-width: 48em) {
     .skills-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 47.9375em) {
     .skills-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 30em) {
     .skills-grid {
       grid-template-columns: 1fr;
     }

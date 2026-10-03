@@ -16,7 +16,7 @@ const sortedCaseStudies = caseStudies.sort((a, b) => a.data.order - b.data.order
       </p>
     </header>
 
-    <div class="case-studies-list">
+    <div class="case-studies-list" role="region" aria-label="Case studies">
       {sortedCaseStudies.map((study, idx) => (
         <article class="card study-card">
           <div class="study-card-content">
